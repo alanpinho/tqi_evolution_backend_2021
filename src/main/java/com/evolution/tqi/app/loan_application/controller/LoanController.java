@@ -18,7 +18,7 @@ public class LoanController {
     private final LoanService service;
 
     @PostMapping("/new")
-    public ResponseEntity<LoanModel> save(@RequestBody LoanModel requestBody) throws Exception{
+    public ResponseEntity<LoanModel> save(@RequestBody LoanModel requestBody){
         if(service.isValidRequisition(requestBody))
             return new ResponseEntity<>(service.save(requestBody), HttpStatus.CREATED);
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
