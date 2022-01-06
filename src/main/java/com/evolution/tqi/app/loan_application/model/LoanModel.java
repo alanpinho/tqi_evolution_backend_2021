@@ -1,12 +1,10 @@
 package com.evolution.tqi.app.loan_application.model;
 
+import com.evolution.tqi.app.register_user.model.UserModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -21,6 +19,10 @@ public class LoanModel{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel user;
 
     private Long totalLoanValueRequired;
 

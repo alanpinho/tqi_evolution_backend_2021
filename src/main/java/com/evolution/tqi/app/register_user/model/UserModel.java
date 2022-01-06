@@ -1,10 +1,13 @@
 package com.evolution.tqi.app.register_user.model;
 
+import com.evolution.tqi.app.loan_application.model.LoanModel;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +28,8 @@ public class UserModel {
     private String firstName;
     private String lastName;
 
+    @OneToMany(mappedBy = "user")
+    private List<LoanModel> loanApplications = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private AddressModel address;

@@ -37,7 +37,7 @@ public class LoanService {
     }
 
     public LoanModel save(LoanModel requestBody){
-            return repository.save(requestBody);
+        return repository.save(requestBody);
     }
 
 }
