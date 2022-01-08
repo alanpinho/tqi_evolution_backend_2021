@@ -1,6 +1,8 @@
 package com.evolution.tqi.app.loan_application.controller;
 
 import com.evolution.tqi.app.loan_application.model.LoanModel;
+import com.evolution.tqi.app.loan_application.request.LoanRequestBody;
+import com.evolution.tqi.app.loan_application.response.LoanResponseBody;
 import com.evolution.tqi.app.loan_application.service.LoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,7 +20,7 @@ public class LoanController {
     private final LoanService service;
 
     @PostMapping("/new")
-    public ResponseEntity<LoanModel> save(@RequestBody LoanModel requestBody){
+    public ResponseEntity<LoanResponseBody> save(@RequestBody LoanRequestBody requestBody){
         if(service.isValidRequisition(requestBody))
             return new ResponseEntity<>(service.save(requestBody), HttpStatus.CREATED);
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

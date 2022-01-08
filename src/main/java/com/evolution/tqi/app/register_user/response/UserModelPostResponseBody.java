@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class UserModelPostResponseBody {
 
-    private String id;
+    private Long id;
 
     private String cpf;
 
