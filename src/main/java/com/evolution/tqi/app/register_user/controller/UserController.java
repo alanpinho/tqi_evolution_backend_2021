@@ -1,6 +1,7 @@
 package com.evolution.tqi.app.register_user.controller;
 
-import com.evolution.tqi.app.register_user.model.UserModel;
+import com.evolution.tqi.app.register_user.request.UserModelPostRequestBody;
+import com.evolution.tqi.app.register_user.response.UserModelPostResponseBody;
 import com.evolution.tqi.app.register_user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class UserController {
     private final UserService service;
 
     @PostMapping("/new")
-    public ResponseEntity<UserModel> save(@RequestBody @Valid UserModel userModel){
+    public ResponseEntity<UserModelPostResponseBody> save(@RequestBody @Valid UserModelPostRequestBody userModel){
         if(service.isValidRequisition(userModel))
             return new ResponseEntity(service.save(userModel), HttpStatus.CREATED);
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

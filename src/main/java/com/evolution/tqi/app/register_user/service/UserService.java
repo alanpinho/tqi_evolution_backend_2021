@@ -1,7 +1,10 @@
 package com.evolution.tqi.app.register_user.service;
 
+import com.evolution.tqi.app.mapper.UserModelMapper;
 import com.evolution.tqi.app.register_user.model.UserModel;
 import com.evolution.tqi.app.register_user.repository.UserRepository;
+import com.evolution.tqi.app.register_user.request.UserModelPostRequestBody;
+import com.evolution.tqi.app.register_user.response.UserModelPostResponseBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +14,7 @@ public class UserService {
 
     private final UserRepository repository;
 
-    public boolean isValidRequisition(UserModel userModel){
+    public boolean isValidRequisition(UserModelPostRequestBody userModel){
         if(isValidAnnualRevenue(userModel.getAnnualRevenue()) &&
             cpfDoesNotExistInDatabase(userModel.getCpf()) &&
             emailDoesNotExistInDatabase(userModel.getEmail()))
@@ -20,7 +23,7 @@ public class UserService {
     }
 
     private boolean isValidAnnualRevenue(Long annualRevenue){
-        if(annualRevenue >= UserModel.MIN_ANNUAL_REVENUE)
+        if(annualRevenue >= UserModelPostRequestBody.MIN_ANNUAL_REVENUE)
             return true;
         return false;
     }
@@ -37,7 +40,8 @@ public class UserService {
         return false;
     }
 
-    public UserModel save(UserModel userModel){
-        return repository.save(userModel);
+    public UserModelPostResponseBody save(UserModelPostRequestBody userModel){
+        UserModel savedUser = repository.save(UserModelMapper.INSTANCE.toUserModel(userModel));
+        return UserModelMapper.INSTANCE.toUserModelPostResponseBody(savedUser);
     }
 }
