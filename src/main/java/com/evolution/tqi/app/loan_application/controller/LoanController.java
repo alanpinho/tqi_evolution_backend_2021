@@ -1,6 +1,5 @@
 package com.evolution.tqi.app.loan_application.controller;
 
-import com.evolution.tqi.app.loan_application.model.LoanModel;
 import com.evolution.tqi.app.loan_application.request.LoanRequestBody;
 import com.evolution.tqi.app.loan_application.response.LoanResponseBody;
 import com.evolution.tqi.app.loan_application.service.LoanService;
