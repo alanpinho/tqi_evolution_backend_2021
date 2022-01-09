@@ -2,12 +2,18 @@ package com.evolution.tqi.app.loan_application.request;
 
 import com.evolution.tqi.app.register_user.response.UserModelPostResponseBody;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.JoinColumn;
 import java.time.LocalDate;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoanRequestBody {
 
     public static final Integer MIN_NUMBER_OF_INSTALMENTS = 1;

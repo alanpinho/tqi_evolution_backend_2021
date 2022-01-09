@@ -35,8 +35,8 @@ public class LoanService {
 
     private boolean isValidDate(LocalDate dateOfFirstInstalment){
         LocalDate now = LocalDate.now();
-        LocalDate maxDate = now.plusMonths(LoanRequestBody.MAX_DATE_IN_MONTHS);
-        LocalDate minDate = now.plusMonths(0);
+        LocalDate maxDate = now.plusMonths(LoanRequestBody.MAX_DATE_IN_MONTHS).plusDays(1);
+        LocalDate minDate = now.plusMonths(LoanRequestBody.MIN_DATE_IN_MONTHS).plusDays(1);
         if(dateOfFirstInstalment.isBefore(maxDate) && dateOfFirstInstalment.isAfter(minDate))
             return true;
         return false;
