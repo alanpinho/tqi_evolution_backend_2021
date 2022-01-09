@@ -1,7 +1,10 @@
 package com.evolution.tqi.app.register_user.request;
 
 import com.evolution.tqi.app.register_user.model.AddressModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.Email;
@@ -10,6 +13,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserModelPostRequestBody {
     public static final Long MIN_ANNUAL_REVENUE = 1L;
 

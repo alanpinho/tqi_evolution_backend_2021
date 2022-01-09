@@ -1,14 +1,20 @@
 package com.evolution.tqi.app.register_user.model;
 
 import com.evolution.tqi.app.loan_application.model.LoanModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserModel {
 
     @Id

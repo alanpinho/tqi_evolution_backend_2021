@@ -1,9 +1,15 @@
 package com.evolution.tqi.app.register_user.response;
 
 import com.evolution.tqi.app.register_user.model.AddressModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserModelPostResponseBody {
 
     private Long id;
