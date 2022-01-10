@@ -18,6 +18,7 @@ public class LoanRequestBody {
 
     public static final Integer MIN_NUMBER_OF_INSTALMENTS = 1;
     public static final Integer MAX_NUMBER_OF_INSTALMENTS = 60;
+    public static final Integer MIN_LOAN_VALUE_REQUIRED = 1;
     public static final Integer MIN_DATE_IN_MONTHS = 0;
     public static final Integer MAX_DATE_IN_MONTHS = 3;
 

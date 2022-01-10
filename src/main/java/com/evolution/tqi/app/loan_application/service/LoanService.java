@@ -19,9 +19,16 @@ public class LoanService {
     private final UserRepository userRepository;
 
     public boolean isValidRequisition(LoanRequestBody requestBody){
-        if(isValidNumberOfInstalments(requestBody.getNumberOfInstalments()) &&
+        if(isValidLoanValueRequired(requestBody.getTotalLoanValueRequired()) &&
+            isValidNumberOfInstalments(requestBody.getNumberOfInstalments()) &&
             isValidDate(requestBody.getDateOfFirstInstalment()) &&
             isValidUser(requestBody.getUser().getId()))
+            return true;
+        return false;
+    }
+
+    private boolean isValidLoanValueRequired(Long loanValueRequired){
+        if(loanValueRequired >= LoanRequestBody.MIN_LOAN_VALUE_REQUIRED)
             return true;
         return false;
     }

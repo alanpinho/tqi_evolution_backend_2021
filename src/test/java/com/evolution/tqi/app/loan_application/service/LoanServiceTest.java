@@ -55,7 +55,31 @@ class LoanServiceTest {
     }
 
     @Test
-    @DisplayName("isValidRequisition returns false when number of instalments are not valid")
+    @DisplayName("isValidRequisition returns false when loan value required is zero")
+    void isValidRequisition_ReturnsFalse_WhenTotalLoanValueRequiredIsZero(){
+        LoanRequestBody request = LoanRequestBodyCreator.createLoanRequestBody();
+        request.setTotalLoanValueRequired(0L);
+
+        Boolean result = service.isValidRequisition(request);
+
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result).isFalse();
+    }
+
+    @Test
+    @DisplayName("isValidRequisition returns false when loan value required is negative")
+    void isValidRequisition_ReturnsFalse_WhenTotalLoanValueRequiredIsNegative(){
+        LoanRequestBody request = LoanRequestBodyCreator.createLoanRequestBody();
+        request.setTotalLoanValueRequired(-1L);
+
+        Boolean result = service.isValidRequisition(request);
+
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result).isFalse();
+    }
+
+    @Test
+    @DisplayName("isValidRequisition returns false when number of instalments is not valid")
     void isValidRequisition_ReturnsFalse_WhenNumberOfInstalmentsIsNegative(){
         LoanRequestBody request = LoanRequestBodyCreator.createLoanRequestBody();
         request.setNumberOfInstalments(-1);
@@ -67,7 +91,7 @@ class LoanServiceTest {
     }
 
     @Test
-    @DisplayName("isValidRequisition returns false when number of instalments are not valid")
+    @DisplayName("isValidRequisition returns false when number of instalments is not valid")
     void isValidRequisition_ReturnsFalse_WhenNumberOfInstalmentsIsLongerThanLimit(){
         LoanRequestBody request = LoanRequestBodyCreator.createLoanRequestBody();
         request.setNumberOfInstalments(LoanCreator.createLoan().getNumberOfInstalments() + 1);
@@ -115,8 +139,8 @@ class LoanServiceTest {
     }
 
     @Test
-    @DisplayName("save persists Loan in database when successful")
-    void save_PersistsLoanInDatabase_WhenSuccessful(){
+    @DisplayName("save persists Loan requisition in database when successful")
+    void save_PersistsLoanRequisitionInDatabase_WhenSuccessful(){
         LoanResponseBody loanExpected = LoanResponseBodyCreator.createLoanResponseBody();
         LoanRequestBody loanToBeSaved = LoanRequestBodyCreator.createLoanRequestBody();
 
