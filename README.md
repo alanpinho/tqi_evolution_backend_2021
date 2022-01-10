@@ -48,8 +48,10 @@ password e annualRevenue são obrigatórios. O modelo de requisição é apresen
 ### Cadastro de solicitação de empréstimo no Banco de Dados (POST)
 * POST (http://localhost:8080/loans/new) -> Cadastra uma solicitação de empréstimo no banco de dados. O formato suportado é JSON e no campo "user" deve existir um 
 usuário no banco de dados com o id indicado, caso contrário o código retornará status 400 Bad Request e não persistirá a requisição no banco. 
-O modelo de requisição é apresentado logo abaixo. O máximo de parcelas (instalments) é 60 e a data máxima para a primeira parcela é 3 meses contados a 
-partir da data atual. <br/>
+O modelo de requisição é apresentado logo abaixo. <br/>
+O máximo de parcelas (instalments) é 60 e a data máxima para a primeira parcela é 3 meses contados a 
+partir da data atual; <br/>
+O valor requerido para empréstimo `totalLoanValueRequired` deve ser igual ou maior a 1; <br/>
 O formato de data que deve ser passado é dd/MM/yyyy.
 ````
 {
