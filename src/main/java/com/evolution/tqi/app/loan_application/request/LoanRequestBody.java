@@ -1,6 +1,5 @@
 package com.evolution.tqi.app.loan_application.request;
 
-import com.evolution.tqi.app.register_user.response.UserModelPostResponseBody;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +21,7 @@ public class LoanRequestBody {
     public static final Integer MAX_DATE_IN_MONTHS = 3;
 
     @JoinColumn(name = "user_id")
-    private UserModelPostResponseBody user;
+    private EmbeddedUserRequestBody user;
 
     private Long totalLoanValueRequired;
 

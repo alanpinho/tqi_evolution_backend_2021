@@ -9,5 +9,4 @@ public class TqiEvolutionApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TqiEvolutionApplication.class, args);
 	}
-
 }

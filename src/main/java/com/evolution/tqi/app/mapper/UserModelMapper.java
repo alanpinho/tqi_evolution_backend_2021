@@ -13,4 +13,5 @@ public abstract class UserModelMapper {
     public abstract UserModel toUserModel(UserModelPostRequestBody userModelPostRequestBody);
 
     public abstract UserModelPostResponseBody toUserModelPostResponseBody(UserModel userModel);
+
 }
